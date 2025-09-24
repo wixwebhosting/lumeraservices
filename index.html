@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex Services - Professional Leaf Removal Services</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional Leaf Removal Services In Granby, CT">
+    <meta name="keywords" content="leaf removal, yard cleanup, leaf blowing, bagging, Granby CT">
+    
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Apex Services - Professional Leaf Removal Services">
+    <meta property="og:description" content="Professional Leaf Removal Services In Granby, CT">
+    <meta property="og:image" content="https://dam.thdstatic.com/content/production/KsKlNyo8FGqbyBBuBp2JWg/kEUCuJgJ-u0q1D53kzOL-A/Original%20file/best-leaf-blowers-for-your-yard-section-1.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="Apex Services">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apex Services - Professional Leaf Removal Services">
+    <meta name="twitter:description" content="Professional Leaf Removal Services In Granby, CT">
+    <meta name="twitter:image" content="https://dam.thdstatic.com/content/production/KsKlNyo8FGqbyBBuBp2JWg/kEUCuJgJ-u0q1D53kzOL-A/Original%20file/best-leaf-blowers-for-your-yard-section-1.jpg">
+    
     <style>
         * {
             margin: 0;
@@ -396,6 +415,86 @@
             color: #ff6b35;
         }
 
+        /* Modal styles for contact popup */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideUp 0.3s ease-out;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f0f0f0;
+        }
+
+        .modal-phone {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin: 1rem 0;
+            display: block;
+        }
+
+        .modal-message {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -572,7 +671,7 @@
                         name="phone"
                         inputmode="tel"
                         required
-                        placeholder="(860) 335-8442">
+                        placeholder="(860) 212-5584">
                 </div>
                 
                 <div class="form-group">
@@ -608,7 +707,7 @@
                 
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <p>📞 (860)-335-8442</p>
+                    <p>📞 (860)-212-5584</p>
                     <p>📍 Serving Granby, CT</p>
                 </div>
                 
@@ -624,6 +723,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+<div class="contact-modal" id="contactModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeContactModal()">&times;</button>
+        <h3>Contact Us Directly</h3>
+        <div class="modal-phone">(860) 212-5582</div>
+        <p class="modal-message">Call or text to contact us directly for immediate assistance!</p>
+    </div>
+</div>
 
     <!-- JavaScript -->
     <script>
@@ -683,7 +792,7 @@
                 contactLabel.textContent = 'Phone Number';
                 contactInput.type = 'tel';
                 contactInput.name = 'phone';
-                contactInput.placeholder = '(860) 335-8442';
+                contactInput.placeholder = '(860) 212-5584';
                 contactInput.required = true;
                 contactInput.setAttribute('inputmode', 'tel');
                 // optional simple phone pattern
@@ -791,46 +900,66 @@
         // Create new leaves more frequently for continuous effect
         setInterval(createLeaf, 2000);
 
-        // Contact Us button instead of emergency
-        function createContactButton() {
-            const contactBtn = document.createElement('div');
-            contactBtn.innerHTML = '📞 Contact Us';
-            contactBtn.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: linear-gradient(45deg, #ff6b35, #f7931e);
-                color: white;
-                padding: 15px 20px;
-                border-radius: 50px;
-                cursor: pointer;
-                font-weight: bold;
-                z-index: 1000;
-                box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
-                animation: pulse 2s infinite;
-                transition: transform 0.3s;
-            `;
-            
-            contactBtn.addEventListener('click', () => {
-                document.querySelector('#contact').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-            
-            contactBtn.addEventListener('mouseenter', () => {
-                contactBtn.style.transform = 'scale(1.05)';
-            });
-            
-            contactBtn.addEventListener('mouseleave', () => {
-                contactBtn.style.transform = 'scale(1)';
-            });
-            
-            document.body.appendChild(contactBtn);
-        }
+        // Modal functions
+    function showContactModal() {
+        document.getElementById('contactModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
 
-        // Add contact button after page loads
-        setTimeout(createContactButton, 3000);
+    function closeContactModal() {
+        document.getElementById('contactModal').classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('contactModal').addEventListener('click', (e) => {
+        if (e.target.id === 'contactModal') {
+            closeContactModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeContactModal();
+        }
+    });
+
+    // Contact Us button with modal popup
+    function createContactButton() {
+        const contactBtn = document.createElement('div');
+        contactBtn.innerHTML = '📞 Contact Us NOW';
+        contactBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+        `;
+        
+        contactBtn.addEventListener('click', showContactModal);
+        
+        contactBtn.addEventListener('mouseenter', () => {
+            contactBtn.style.transform = 'scale(1.05)';
+        });
+        
+        contactBtn.addEventListener('mouseleave', () => {
+            contactBtn.style.transform = 'scale(1)';
+        });
+        
+        document.body.appendChild(contactBtn);
+    }
+
+    // Add contact button immediately after page loads
+    createContactButton();
     </script>
 </body>
 </html>
